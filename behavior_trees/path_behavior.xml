@@ -1,0 +1,21 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+
+    <Sequence name="navigation_sequence">
+      
+      <GetNextNode current_node="{current}" next_node="{next}" path_topic="/planned_path" />
+
+      <TurnToTarget diff="{next_minus_current}" />
+
+      <MoveUntilDistance target_distance="550" distance_topic="/distance_data_received" />
+
+      <CheckStepHeight node_height_topic="/node_height" current_node="{current}" next_node="{next}" />
+
+      <ClimbStep climb_cmd_topic="/climb_cmd" />
+
+      <StopRobot />
+
+    </Sequence>
+
+  </BehaviorTree>
+</root>
